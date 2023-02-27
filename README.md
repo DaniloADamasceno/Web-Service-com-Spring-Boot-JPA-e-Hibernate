@@ -16,6 +16,7 @@
 
 • Tratamento de exceções
 
+![Imagem](https://github.com/DaniloADamasceno/Web-Service-com-Spring-Boot-JPA-e-Hibernate/blob/main/Imag2.png)
 
 ## Stack utilizada
 
