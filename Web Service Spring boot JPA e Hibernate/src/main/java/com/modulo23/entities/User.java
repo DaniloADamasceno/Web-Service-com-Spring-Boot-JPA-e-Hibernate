@@ -1,13 +1,25 @@
-package com.modulo23.webservices.entities;
+package com.modulo23.entities;
+
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 
 import java.io.Serializable;
 
+@Entity
+@Table(name = "table_user")
 public class User implements Serializable {
-
-
     private static final long serialVersionUID = 1L;
+
+
+    @Id // Primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Auto increment
     private Long id;
+
     private String name;
     private String email;
     private String phone;
@@ -15,8 +27,7 @@ public class User implements Serializable {
 
     // ---------------------------------------   Constructors   --------------------------------------------------------
 
-    public User() {
-    }
+    public User() {}
 
     public User(Long id, String name, String email, String phone, String password) {
         this.id = id;
@@ -28,7 +39,7 @@ public class User implements Serializable {
 
     // ---------------------------------------   Getters and Setters   -------------------------------------------------
 
-    public Long id() {
+    public Long getId() {
         return id;
     }
 
@@ -36,7 +47,7 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public String name() {
+    public String getName() {
         return name;
     }
 
@@ -44,7 +55,7 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public String email() {
+    public String getEmail() {
         return email;
     }
 
@@ -52,7 +63,7 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String phone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -60,13 +71,15 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
-    public String password() {
+    public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
+
+
     // ---------------------------------------   HashCode and Equals   -------------------------------------------------
 
     @Override
@@ -81,4 +94,8 @@ public class User implements Serializable {
     public int hashCode() {
         return id.hashCode();
     }
+
+
+
+
 }
