@@ -1,22 +1,28 @@
 
 # Projeto Web Services com Spring Boot e JPA / Hibernate
 
+![GitHub repo size](https://img.shields.io/github/repo-size/DaniloADamasceno/Web-Service-com-Spring-Boot-JPA-e-Hibernate=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/DaniloADamasceno/Web-Service-com-Spring-Boot-JPA-e-Hibernate?style=for-the-badge)
 
-• Criar projeto Spring Boot Java
-
-• Implementar modelo de domínio
-
-• Estruturar camadas lógicas: resource, service, repository
-
-• Configurar banco de dados de teste (H2)
-
-• Povoar o banco de dados
-
-• CRUD - Create, Retrieve, Update, Delete
-
-• Tratamento de exceções
+<hr>
 
 ![Imagem](https://github.com/DaniloADamasceno/Web-Service-com-Spring-Boot-JPA-e-Hibernate/blob/main/Imag2.png)
+
+
+- [x] Criar projeto Spring Boot Java
+
+- [ ] Implementar modelo de domínio
+
+- [ ] Estruturar camadas lógicas: resource, service, repository
+
+- [ ] Configurar banco de dados de teste (H2)
+
+- [ ] Povoar o banco de dados
+
+- [ ] CRUD - Create, Retrieve, Update, Delete
+
+- [ ] Tratamento de exceções
+
 
 ## Stack utilizada
 
