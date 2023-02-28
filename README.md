@@ -1,7 +1,7 @@
 
 # Projeto Web Services com Spring Boot e JPA / Hibernate
 
-![GitHub repo size](https://img.shields.io/github/repo-size/DaniloADamasceno/Web-Service-com-Spring-Boot-JPA-e-Hibernate=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/DaniloADamasceno/Web-Service-com-Spring-Boot-JPA-e-Hibernate?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/DaniloADamasceno/Web-Service-com-Spring-Boot-JPA-e-Hibernate?style=for-the-badge)
 
 <hr>
