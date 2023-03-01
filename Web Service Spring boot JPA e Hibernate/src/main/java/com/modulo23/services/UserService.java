@@ -3,14 +3,17 @@ package com.modulo23.services;
 import com.modulo23.entities.User;
 import com.modulo23.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
 
+@Service //  Anotação que indica que a classe é um serviço
 public class UserService  {
 
-    @Autowired
+    @Autowired //  Injeção de dependência
     private UserRepository repository;
+
 
     //------------------------------------   Methods   -----------------------------------------------------------------
 
