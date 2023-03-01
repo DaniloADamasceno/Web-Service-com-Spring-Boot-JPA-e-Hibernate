@@ -1,6 +1,9 @@
 package com.modulo23.resources;
 
+import java.util.List;
 
+import com.modulo23.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +15,13 @@ import com.modulo23.entities.User;
 @RequestMapping(value = "/users") // Path
 public class UserResource {
 
+    @Autowired
+    private UserService service;
+
     @GetMapping
-    public ResponseEntity<User> findAll() {
-        User userTest = new User(1L, "Snow", "snow@gmail.com", "61900001111", "1111");
+    public ResponseEntity<List<User>> findAll() {
+        List<User> userTest = service.findAll();
+
         return ResponseEntity.ok().body(userTest);
     }
 }
