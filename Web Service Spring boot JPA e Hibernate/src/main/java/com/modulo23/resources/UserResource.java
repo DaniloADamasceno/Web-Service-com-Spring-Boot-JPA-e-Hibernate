@@ -12,10 +12,10 @@ import com.modulo23.services.UserService;
 import com.modulo23.entities.User;
 
 @RestController
-@RequestMapping(value = "/users") // Path
+@RequestMapping(value = "/users" ) //, method = RequestMethod.GET)
 public class UserResource {
 
-    @Autowired
+    //@Autowired
     private UserService service;
 
     @GetMapping
