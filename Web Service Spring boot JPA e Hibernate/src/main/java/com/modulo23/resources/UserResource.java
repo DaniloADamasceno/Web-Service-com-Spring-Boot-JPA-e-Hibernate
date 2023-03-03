@@ -15,7 +15,7 @@ import com.modulo23.entities.User;
 @RequestMapping(value = "/users" ) //, method = RequestMethod.GET)
 public class UserResource {
 
-    //@Autowired
+    @Autowired
     private UserService service;
 
     @GetMapping
