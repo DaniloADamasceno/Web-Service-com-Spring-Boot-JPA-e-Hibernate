@@ -1,15 +1,14 @@
 package com.modulo23.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import lombok.Getter;
+import jakarta.persistence.*;
 
 
 import java.io.Serializable;
 
+
+@Getter
 @Entity
 @Table(name = "table_user")
 public class User implements Serializable {
@@ -18,18 +17,26 @@ public class User implements Serializable {
 
     @Id // Primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // Auto increment
-    private Long id;
+    @Column(name = "ID")
+    private Integer id;
 
+    @Column(name = "Nome")
     private String name;
+
+    //@Column(email = "Email")
     private String email;
+
+    //@Column(phone = "Telefone")
     private String phone;
+
+    //@Column(password = "Senha")
     private String password;
 
     // ---------------------------------------   Constructors   --------------------------------------------------------
 
     public User() {}
 
-    public User(Long id, String name, String email, String phone, String password) {
+    public User(Integer id, String name, String email, String phone, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -39,11 +46,11 @@ public class User implements Serializable {
 
     // ---------------------------------------   Getters and Setters   -------------------------------------------------
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -94,8 +101,5 @@ public class User implements Serializable {
     public int hashCode() {
         return id.hashCode();
     }
-
-
-
 
 }

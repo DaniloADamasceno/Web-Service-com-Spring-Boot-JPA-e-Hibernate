@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service //  Anotação que indica que a classe é um serviço
 public class UserService  {
@@ -21,8 +22,9 @@ public class UserService  {
         return repository.findAll();
     }
 
-    public List<User> findAllById(Long id) {  //  Método que retorna todos os usuários através do ID
-        return repository.findAllById(Collections.singleton(id));
+    public List<User> findAllById(Integer id) {  //  Método que retorna todos os usuários através do ID
+        Optional<User> optionalById = repository.findById(id);
+        return (List<User>) optionalById.get();
     }
 
 }

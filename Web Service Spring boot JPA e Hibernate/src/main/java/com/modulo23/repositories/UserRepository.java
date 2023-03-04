@@ -6,7 +6,6 @@ import com.modulo23.entities.User;
 import org.springframework.stereotype.Repository;
 
 @Repository //  Anotação que indica que a classe é um repositório
-public interface UserRepository extends JpaRepository<User, Long> {
-
+public interface UserRepository extends JpaRepository<User, Integer> {
 
 }
