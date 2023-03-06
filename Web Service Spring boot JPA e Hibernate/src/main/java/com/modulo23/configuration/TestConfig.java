@@ -1,4 +1,4 @@
-package com.modulo23.settings;
+package com.modulo23.configuration;
 
 import com.modulo23.repositories.UserRepository;
 import com.modulo23.entities.User;

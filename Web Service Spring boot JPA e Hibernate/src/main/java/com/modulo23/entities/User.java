@@ -1,17 +1,18 @@
 package com.modulo23.entities;
 
 
-import lombok.Getter;
+
 import jakarta.persistence.*;
 
-
+import java.io.Serial;
 import java.io.Serializable;
 
 
-@Getter
 @Entity
-@Table(name = "table_user")
+@Table(name = "table_users")
 public class User implements Serializable {
+
+    @Serial
     private static final long serialVersionUID = 1L;
 
 
@@ -60,14 +61,6 @@ public class User implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPhone() {

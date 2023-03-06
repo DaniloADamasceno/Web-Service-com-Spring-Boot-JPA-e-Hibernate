@@ -17,18 +17,39 @@
         <java.version>17</java.version>
     </properties>
 
-
     <dependencies>
 
+        <dependency>                            <!--! Hibernate -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>                            <!--! Teste -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>                            <!--! JPA -->
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <dependency>                            <!--! Hibernate -->
+        <dependency>                            <!--! Banco de dados #H2 -->
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>                           <!--! Banco de dados Postgres -->
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>                            <!--! Lombok -->
@@ -38,19 +59,16 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>                            <!--! Teste -->
+        <dependency>                            <!--! DevTools -->
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
         </dependency>
 
-
-        <dependency>                            <!--! Banco de dados  H2 -->
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
+        <dependency>                             <!--! Tomcat -->
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+    </dependency>
 
 
     </dependencies>
@@ -63,5 +81,26 @@
             </plugin>
         </plugins>
     </build>
+
+<repositories>
+<repository>
+    <id>spring-milestones</id>
+    <name>Spring Milestones</name>
+    <url>https://repo.spring.io/milestone</url>
+    <snapshots>
+        <enabled>false</enabled>
+    </snapshots>
+</repository>
+</repositories>
+<pluginRepositories>
+<pluginRepository>
+    <id>spring-milestones</id>
+    <name>Spring Milestones</name>
+    <url>https://repo.spring.io/milestone</url>
+    <snapshots>
+        <enabled>false</enabled>
+    </snapshots>
+</pluginRepository>
+</pluginRepositories>
 
 </project>
