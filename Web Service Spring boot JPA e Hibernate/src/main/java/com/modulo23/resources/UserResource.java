@@ -4,10 +4,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.modulo23.services.UserService;
 import com.modulo23.entities.User;
@@ -25,8 +22,8 @@ public class UserResource {
         return ResponseEntity.badRequest().body(userTest);
     }
 
-    @GetMapping
-    public ResponseEntity<List<User>> findAllById() {
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<List<User>> findAllById(@PathVariable Integer id) {
         List<User> userTest = service.findAllById(null);
         return ResponseEntity.ok().body(userTest);
     }
