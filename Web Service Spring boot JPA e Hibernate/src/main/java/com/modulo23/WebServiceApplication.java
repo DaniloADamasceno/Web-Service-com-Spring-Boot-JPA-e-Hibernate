@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 
-@ComponentScan(basePackages = {"com.modulo23.entities", "com.modulo23.repositories", "com.modulo23.services", "com.modulo23.resources" , "com.modulo23.configuration"})
+//@ComponentScan(basePackages = {"com.modulo23.entities", "com.modulo23.repositories", "com.modulo23.services", "com.modulo23.resources" , "com.modulo23.configuration"})
 @SpringBootApplication
 public class WebServiceApplication {
 

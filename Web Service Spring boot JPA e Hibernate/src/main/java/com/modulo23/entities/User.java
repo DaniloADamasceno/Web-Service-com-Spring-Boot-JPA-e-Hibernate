@@ -1,15 +1,18 @@
 package com.modulo23.entities;
 
 
-
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.modulo23.entities.Order;
 
 
 @Entity
-@Table(name = "table_users")
+@Table(name = "tabela_usuario")
 public class User implements Serializable {
 
     @Serial
@@ -21,17 +24,21 @@ public class User implements Serializable {
     @Column(name = "ID")
     private Integer id;
 
-    @Column(name = "Nome")
+    @Column(name = "nome_cliente", nullable = false, length = 250)
     private String name;
 
-    //@Column(email = "Email")
+    @Column(name = "email", nullable = false, length = 100)
     private String email;
 
-    //@Column(phone = "Telefone")
+    @Column(name = "telefone", nullable = false, length = 20)
     private String phone;
 
-    //@Column(password = "Senha")
+    @Column(name = "senha", nullable = false, length = 16)
     private String password;
+
+    @JsonIgnore  //  Ignora a lista de pedidos do cliente
+    @OneToMany(mappedBy = "client")  // 1 User pode ter varios Orders
+    private List<Order> orders = new ArrayList<>();
 
     // ---------------------------------------   Constructors   --------------------------------------------------------
 
