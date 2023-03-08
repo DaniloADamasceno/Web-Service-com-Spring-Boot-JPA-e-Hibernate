@@ -4,6 +4,9 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/DaniloADamasceno/Web-Service-com-Spring-Boot-JPA-e-Hibernate?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/DaniloADamasceno/Web-Service-com-Spring-Boot-JPA-e-Hibernate?style=for-the-badge)
 
+
+[![wakatime](https://wakatime.com/badge/user/e7f2e494-878d-4290-9a2b-cc473da48b8a/project/089b6faa-d3c9-4c87-90d4-c03f25586e57.svg)](https://wakatime.com/badge/user/e7f2e494-878d-4290-9a2b-cc473da48b8a/project/089b6faa-d3c9-4c87-90d4-c03f25586e57)
+
 <hr>
 
 ![Imagem](https://github.com/DaniloADamasceno/Web-Service-com-Spring-Boot-JPA-e-Hibernate/blob/main/Imag2.png)
