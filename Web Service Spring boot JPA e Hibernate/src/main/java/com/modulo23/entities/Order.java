@@ -1,6 +1,7 @@
 package com.modulo23.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.modulo23.entities.enuns.OrderStatus;
 
 import javax.persistence.*;
 import java.io.Serial;
@@ -25,17 +26,22 @@ public class Order implements Serializable{
     @Column(name = "hora_pedido")
     private Instant moment;               //!  A Utilização do INSTANT e melhor que o Date
 
+    private Integer orderStatus;
+
     @ManyToOne()    //!  A Utilização do ManyToAny e melhor que o ManyToOne  --->> (metaColumn = @Column(name = "CLIENT_ID"))
     @JoinColumn(name = "id_cliente", referencedColumnName = "id")
     private User client;
 
     // ---------------------------------------   Constructors   --------------------------------------------------------
 
-    public Order() {}
+    public Order(Object o, Instant parse, User userNina) {}
 
-    public Order(Integer id, Instant moment, User client) {
+    public Order(Integer id, Instant moment,OrderStatus orderStatus, User client) {
         this.id = id;
         this.moment = moment;
+        setOrderStatus(orderStatus);
+        this.client = client;
+
     }
     // ---------------------------------------   Getters and Setters   -------------------------------------------------
 
@@ -45,6 +51,17 @@ public class Order implements Serializable{
 
     public Instant getMoment() {
         return moment;
+    }
+
+    public OrderStatus getOrderStatus() {
+        if (orderStatus == null)
+            return null;
+        else
+            return OrderStatus.valueOf(orderStatus);
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus.getCode();
     }
     //---------------------------------------   HashCode and Equals   --------------------------------------------------
 
