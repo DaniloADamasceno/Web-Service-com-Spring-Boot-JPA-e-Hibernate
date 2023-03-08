@@ -10,22 +10,22 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value = {"/users"}, method = RequestMethod.GET) //, method = RequestMethod.GET)
+@RequestMapping(value = {"/usuarios"}, method = RequestMethod.GET) //, method = RequestMethod.GET)
 public class ResourceUser {
 
     @Autowired
-    private ServiceUser service;
+    private ServiceUser serviceUser;
 
     @PostMapping
     public ResponseEntity<List<User>> findAll() {
-        List<User> userTest = service.findAll();
+        List<User> userTest = serviceUser.findAll();
         return ResponseEntity.badRequest().body(userTest);
     }
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<List<User>> findAllById(@PathVariable Integer id) {
         List<User> userTest;
-        userTest = service.findAllById(null);
+        userTest = serviceUser.findAllById(null);
         return ResponseEntity.ok().body(userTest);
     }
 }

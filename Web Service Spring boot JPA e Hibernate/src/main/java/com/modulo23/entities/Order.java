@@ -43,6 +43,10 @@ public class Order implements Serializable{
         this.client = client;
 
     }
+
+    public Order() {
+
+    }
     // ---------------------------------------   Getters and Setters   -------------------------------------------------
 
     public Integer getId() {

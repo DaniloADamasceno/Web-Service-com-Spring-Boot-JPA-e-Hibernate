@@ -12,17 +12,17 @@ import java.util.Optional;
 public class ServiceOrder {
 
     @Autowired //  Injeção de dependência
-    private RepositoryOrder repository;
+    private RepositoryOrder repositoryOrder;
 
 
     //------------------------------------   Methods   -----------------------------------------------------------------
 
     public List<Order> findAll() {  //  Método que retorna todos os usuários
-        return repository.findAll();
+        return repositoryOrder.findAll();
     }
 
     public List<Order> findAllById(Integer id) {  //  Método que retorna todos os usuários através do ID
-        Optional<Order> optionalById = repository.findById(id);
+        Optional<Order> optionalById = repositoryOrder.findById(id);
         return (List<Order>) optionalById.get();
     }
 

@@ -14,18 +14,18 @@ import java.util.List;
 public class ResourceOrder {
 
     @Autowired
-    private ServiceOrder service;
+    private ServiceOrder serviceOrder;
 
     @PostMapping
     public ResponseEntity<List<Order>> findAll() {
-        List<Order> OrderTest = service.findAll();
+        List<Order> OrderTest = serviceOrder.findAll();
         return ResponseEntity.badRequest().body(OrderTest);
     }
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<List<Order>> findAllById(@PathVariable Integer id) {
         List<Order> OrderTest;
-        OrderTest = service.findAllById(null);
+        OrderTest = serviceOrder.findAllById(null);
         return ResponseEntity.ok().body(OrderTest);
     }
 }

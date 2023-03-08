@@ -21,7 +21,7 @@ public class User implements Serializable {
 
     @Id // Primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // Auto increment
-    @Column(name = "ID")
+    //@Column(name = "id_usuario")
     private Integer id;
 
     @Column(name = "nome_cliente", nullable = false, length = 250)

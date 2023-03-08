@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository //  Anotação que indica que a classe é um repositório
 public interface RepositoryOrder extends JpaRepository<Order, Integer> {
-
 }

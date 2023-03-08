@@ -12,17 +12,17 @@ import java.util.Optional;
 public class ServiceUser {
 
     @Autowired //  Injeção de dependência
-    private RepositoryUser repository;
+    private RepositoryUser repositoryUser;
 
 
     //------------------------------------   Methods   -----------------------------------------------------------------
 
     public List<User> findAll() {  //  Método que retorna todos os usuários
-        return repository.findAll();
+        return repositoryUser.findAll();
     }
 
     public List<User> findAllById(Integer id) {  //  Método que retorna todos os usuários através do ID
-        Optional<User> optionalById = repository.findById(id);
+        Optional<User> optionalById = repositoryUser.findById(id);
         return (List<User>) optionalById.get();
     }
 
