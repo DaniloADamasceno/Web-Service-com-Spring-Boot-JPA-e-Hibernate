@@ -1,5 +1,7 @@
 package com.modulo23.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
@@ -8,7 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "tabela_categoria")
+@Table(name = "categoria")
 public class Category implements Serializable {
 
     @Serial
@@ -16,13 +18,15 @@ public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_categoria")
+    //@Column(name = "id_categoria")
     private Integer id;
 
-    @Column(name = "nome_categoria", nullable = false, length = 100)
+    @Column(name = "nome", nullable = false, length = 100)
     private String name;
 
-    @Transient  //quando não quer que o atributo seja persistido no banco de dados
+
+    @JsonIgnore  // para não entrar em ‘loop’ infinito na serialização
+    @ManyToMany(mappedBy = "categories") //nome do atributo que está mapeando a tabela no outro lado da relação (Product) --> usa-se o nome da Coleção "(categories)"
     private Set<Product> products = new HashSet<>();
     //---------------------------------------   Constructors   ---------------------------------------------------------
     public Category() {

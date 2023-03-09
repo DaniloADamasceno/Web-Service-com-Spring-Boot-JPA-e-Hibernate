@@ -9,7 +9,7 @@ import java.util.Set;
 import com.modulo23.entities.Category;
 
 @Entity
-@Table(name = "tabela_produto")
+@Table(name = "produto")
 public class Product implements Serializable {
 
     @Serial
@@ -17,22 +17,26 @@ public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_produto")
+    //@Column(name = "id_produto")
     private Integer id;
 
-    @Column(name = "nome_produto", nullable = false, length = 100)
+    @Column(name = "nome", nullable = false, length = 100)
     private String name;
 
-    @Column(name = "descricao_produto")
+    @Column(name = "descricao")
     private String description;
 
-    @Column(name = "preco_produto")
+    @Column(name = "preço")
     private Double price;
 
     @Column(name = "url_imagem")
     private String urlImage;
 
-    @Transient   //quando não quer que o atributo seja persistido no banco de dados
+    //@Transient   //quando não quer que o atributo seja persistido no banco de dados
+    @ManyToMany
+    @JoinTable(name = "produto_categoria",          //nome da tabela que vai ser criada no banco de dados
+            joinColumns = @JoinColumn(name = "id_produto"),  //Nome da Tabela que está sendo mapeada
+            inverseJoinColumns = @JoinColumn(name = "id_categoria"))
     private Set<Category> categories = new HashSet<>();
     //---------------------------------------   Constructors   ---------------------------------------------------------
 

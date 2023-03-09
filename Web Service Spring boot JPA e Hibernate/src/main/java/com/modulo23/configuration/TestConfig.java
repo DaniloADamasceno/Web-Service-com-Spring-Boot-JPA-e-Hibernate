@@ -37,7 +37,7 @@ public class TestConfig implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception { // Método que será executado quando a aplicação for iniciada
 
-        //?------------------------   Criação de uns usuários para teste   ---------------------------------------------
+        //?------------------------   Criação de uns USUÀRIOS para teste   ---------------------------------------------
         User userNina = new User(null, "Nina", "nina@gmail.com", "6191112222", "1111");
         User userFred = new User(null, "Frederico", "frederico@gmail.com", "6192223333", "2222");
         User userSnow = new User(null, "Snow", "snow@gmail.com", "6191114444", "3333");
@@ -57,7 +57,7 @@ public class TestConfig implements CommandLineRunner {
         Order orderMalu = new Order(null, Instant.parse("2021-11-25T07:59:59Z"), OrderStatus.DELIVERED, userMalu);
 
 
-        //?-------------------------   Criação de alguns produtos para teste   -----------------------------------------
+        //?-------------------------   Criação de alguns PRODUTOS para teste   -----------------------------------------
         Product produto1 = new Product(null, "TV", "TV 32 polegadas", 1299.89, "");
         Product produto2 = new Product(null, "Mouse", "Mouse sem fio Logitec", 89.90, "");
         Product produto3 = new Product(null, "Mesa de escritório", "Mesa de escritório em madeira mogno", 478.35, "");
@@ -70,7 +70,13 @@ public class TestConfig implements CommandLineRunner {
         Product produto9 = new Product(null, "Guarda Roupas", "Guarda Roupas Casal 6 portas", 2175.00, "");
         Product produto10 = new Product(null, "Filtro", "Filtro filtro mais 4 Litros plus", 989.99, "");
 
-        //?-------------------------   Criação de alguma Categorias para teste   ---------------------------------------
+        Product produto11 = new Product(null, "Camiseta", "Camiseta Gola Pollo V", 89.99, "");
+        Product produto12 = new Product(null, "Calça", "Calça Jeans", 99.99, "");
+        Product produto13 = new Product(null, "Bola de Tênis", "Bola de Tênis Nike", 79.99, "");
+        Product produto14 = new Product(null, "Bermuda", "Bermuda de praia", 59.99, "");
+        Product produto15 = new Product(null, "Rede de Volei", "Rede de Volei 2m x 6m", 629.99, "");
+
+        //?-------------------------   Criação de alguma CATEGORIAS para teste   ---------------------------------------
         Category categoria1 = new Category(null, "Eletro e Eletronicos");
         Category categoria2 = new Category(null, "Móveis");
         Category categoria3 = new Category(null, "Casa e Jardim");
@@ -78,6 +84,24 @@ public class TestConfig implements CommandLineRunner {
         Category categoria5 = new Category(null, "Esporte e Lazer");
 
 
+        //?-------------------------   Associação de PRODUTOS com CATEGORIAS   -----------------------------------------
+        produto1.getCategories().add(categoria1);   // Eletro e Eletronicos
+        produto2.getCategories().add(categoria1);   // Eletro e Eletronicos
+        produto3.getCategories().add(categoria2);   // Móveis
+        produto4.getCategories().add(categoria3);   // Casa e Jardim
+        produto5.getCategories().add(categoria3);   // Casa e Jardim
+
+        produto6.getCategories().add(categoria1);   // Eletro e Eletronicos
+        produto7.getCategories().add(categoria2);   // Móveis
+        produto8.getCategories().add(categoria2);   // Móveis
+        produto9.getCategories().add(categoria2);   // Móveis
+        produto10.getCategories().add(categoria1);  // Eletro e Eletronicos
+
+        produto11.getCategories().add(categoria4);  // Vestuario
+        produto12.getCategories().add(categoria4);  // Vestuario
+        produto13.getCategories().add(categoria5);  // Esporte e Lazer
+        produto14.getCategories().add(categoria4);  // Vestuario
+        produto15.getCategories().add(categoria5);  // Esporte e Lazer
 
 
         //?-------------------------   Salvando os dados no banco de dados   -------------------------------------------
@@ -92,7 +116,9 @@ public class TestConfig implements CommandLineRunner {
         categoryRepository.saveAll(Arrays.asList(categoria1, categoria2, categoria3, categoria4, categoria5));
 
         //!  Salvando os PRODUTOS no banco de dados
-        productRepository.saveAll(Arrays.asList(produto1, produto2, produto3, produto4, produto5, produto6, produto7, produto8, produto9, produto10));
+        productRepository.saveAll(Arrays.asList(produto1, produto2, produto3, produto4, produto5,
+                produto6, produto7, produto8, produto9, produto10,
+                produto11, produto12, produto13, produto14, produto15));
 
     }
 }

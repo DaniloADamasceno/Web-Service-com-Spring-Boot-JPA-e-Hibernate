@@ -12,7 +12,7 @@ import com.modulo23.entities.Order;
 
 
 @Entity
-@Table(name = "tabela_usuario")
+@Table(name = "usuario")
 public class User implements Serializable {
 
     @Serial
@@ -24,7 +24,7 @@ public class User implements Serializable {
     //@Column(name = "id_usuario")
     private Integer id;
 
-    @Column(name = "nome_cliente", nullable = false, length = 250)
+    @Column(name = "cliente", nullable = false, length = 250)
     private String name;
 
     @Column(name = "email", nullable = false, length = 100)

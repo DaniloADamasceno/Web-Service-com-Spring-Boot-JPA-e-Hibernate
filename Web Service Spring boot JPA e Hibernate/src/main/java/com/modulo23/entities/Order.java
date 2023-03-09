@@ -11,7 +11,7 @@ import java.time.Instant;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tabela_pedidos")
+@Table(name = "pedidos")
 public class Order implements Serializable{
 
     @Serial
@@ -26,6 +26,7 @@ public class Order implements Serializable{
     @Column(name = "hora_pedido")
     private Instant moment;               //!  A Utilização do INSTANT e melhor que o Date
 
+    @Column(name = "status_pedido")
     private Integer orderStatus;
 
     @ManyToOne()    //!  A Utilização do ManyToAny e melhor que o ManyToOne  --->> (metaColumn = @Column(name = "CLIENT_ID"))
