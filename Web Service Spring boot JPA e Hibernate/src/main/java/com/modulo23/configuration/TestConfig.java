@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.modulo23.entities.Payment;
+
 import java.time.Instant;
 import java.util.Arrays;
 
@@ -33,6 +35,7 @@ public class TestConfig implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception { // Método que será executado quando a aplicação for iniciada
+
 
         //?------------------------   Criação de uns USUÀRIOS para teste   ---------------------------------------------
         User userNina = new User(null, "Nina", "nina@gmail.com", "6191112222", "1111");
@@ -73,6 +76,7 @@ public class TestConfig implements CommandLineRunner {
         Product produto14 = new Product(null, "Bermuda", "Bermuda de praia", 59.99, "");
         Product produto15 = new Product(null, "Rede de Volei", "Rede de Volei 2m x 6m", 629.99, "");
 
+
         //?-------------------------   Criação de alguma CATEGORIAS para teste   ---------------------------------------
         Category categoria1 = new Category(null, "Eletro e Eletronicos");
         Category categoria2 = new Category(null, "Móveis");
@@ -100,6 +104,7 @@ public class TestConfig implements CommandLineRunner {
         produto14.getCategories().add(categoria4);  // Vestuario
         produto15.getCategories().add(categoria5);  // Esporte e Lazer
 
+
         //?-------------------------   Criação de alguns ITENS DO PEDIDO para teste   ----------------------------------
         OrderItem ordemItem1 = new OrderItem(orderSnoopy2, produto3, 2, produto3.getPrice());
         OrderItem ordemItem2 = new OrderItem(orderNina, produto6, 1, produto6.getPrice());
@@ -107,23 +112,42 @@ public class TestConfig implements CommandLineRunner {
         OrderItem ordemItem4 = new OrderItem(orderMaggie, produto6, 2, produto6.getPrice());
         OrderItem ordemItem5 = new OrderItem(orderSnow, produto13, 1, produto13.getPrice());
 
+
+        //?-------------------------   Associação de ITENS DO PEDIDO com PEDIDOS   -------------------------------------
+        Payment pagamento1 = new Payment(null, Instant.parse("2022-10-24T10:00:00Z"), orderNina);
+        Payment pagamento2 = new Payment(null, Instant.parse("2021-10-02T10:13:13Z"), orderMaggie);
+        Payment pagamento5 = new Payment(null, Instant.parse("2021-10-02T10:13:13Z"), orderSnoopy);
+        Payment pagamento3 = new Payment(null, Instant.parse("2021-11-02T10:13:13Z"), orderFred);
+        Payment pagamento4 = new Payment(null, Instant.parse("2021-10-02T10:13:13Z"), orderNina2);
+
+
         //?-------------------------   Salvando os dados no banco de dados   -------------------------------------------
-        //!  Salvando o usuário no banco de dados
+        //!   >>>>>   Salvando o usuário no banco de dados
         userRepository.saveAll(Arrays.asList(userNina, userFred, userSnow, userMaggie, userSnoopy, userMalu));
         // userRepository.save(userFred);  --- >>>     Salvando um unico usuário no banco de dados (Outra forma)
 
-        //!  Salvando os PEDIDOS no banco de dados
-        orderRepository.saveAll(Arrays.asList(orderNina, orderNina2, orderFred, orderSnow, orderMaggie, orderSnoopy, orderMalu, orderSnoopy2));
+        //!   >>>>>   Salvando os PEDIDOS no banco de dados
+        orderRepository.saveAll(Arrays.asList(orderNina, orderNina2, orderFred, orderSnow, orderMaggie,
+                orderSnoopy, orderMalu, orderSnoopy2));
 
-        //!  Salvando as CATEGORIAS no banco de dados
+        //!   >>>>>   Salvando as CATEGORIAS no banco de dados
         categoryRepository.saveAll(Arrays.asList(categoria1, categoria2, categoria3, categoria4, categoria5));
 
-        //!  Salvando os PRODUTOS no banco de dados
+        //!   >>>>>   Salvando os PRODUTOS no banco de dados
         productRepository.saveAll(Arrays.asList(produto1, produto2, produto3, produto4, produto5,
                 produto6, produto7, produto8, produto9, produto10,
                 produto11, produto12, produto13, produto14, produto15));
 
-        //!  Salvando os ITENS DO PEDIDO no banco de dados
+        //!   >>>>>   Salvando os ITENS DO PEDIDO no banco de dados
         orderItemRepository.saveAll(Arrays.asList(ordemItem1, ordemItem2, ordemItem3, ordemItem4, ordemItem5));
+
+        //!  Salvando os PAGAMENTOS no banco de dados
+        orderNina.setPayment(pagamento1);   // Associação do pagamento com o pedido
+        orderMaggie.setPayment(pagamento2); // Associação do pagamento com o pedido
+        orderFred.setPayment(pagamento3);   // Associação do pagamento com o pedido
+        orderNina2.setPayment(pagamento4);  // Associação do pagamento com o pedido
+        orderSnoopy.setPayment(pagamento5); // Associação do pagamento com o pedido
+
+        orderRepository.saveAll(Arrays.asList(orderNina, orderMaggie, orderFred, orderNina2, orderSnoopy));  // Salvando o pedido no banco de dados
     }
 }

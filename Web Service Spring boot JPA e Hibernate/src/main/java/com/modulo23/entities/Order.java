@@ -21,7 +21,7 @@ public class Order implements Serializable{
 
     @Id // Primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // Auto increment
-    @Column(name = "id_pedido")
+    //@Column(name = "id_pedido")
     private Integer id;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")  //  Formatação da data e hora
@@ -38,6 +38,8 @@ public class Order implements Serializable{
     @OneToMany(mappedBy = "id.order")  //  Nome do atributo que está mapeando a tabela no outro lado da relação (OrderItem) --> usa-se o nome da Classe "(id.order)"
     private Set<OrderItem> items = new HashSet<>();
 
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)  //  Nome do atributo que está mapeando a tabela no outro lado da relação (Payment) --> usa-se o nome da Classe "(order)"
+    private Payment payment;
 
     //? ---------------------------------------   Constructors   --------------------------------------------------------
 
@@ -77,6 +79,14 @@ public class Order implements Serializable{
 
     public Set<OrderItem> getItems() {
         return items;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 
     //---------------------------------------   HashCode and Equals   --------------------------------------------------
