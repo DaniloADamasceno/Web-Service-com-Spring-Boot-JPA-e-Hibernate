@@ -1,5 +1,6 @@
 package com.modulo23.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.modulo23.entities.primaryKeys.PrimaryKeyOrderItem;
 
 import javax.persistence.EmbeddedId;
@@ -20,7 +21,7 @@ public class OrderItem implements Serializable {
     private Double price;
 
     @EmbeddedId //para dizer que a classe é um subtipo de outra classe
-    private PrimaryKeyOrderItem id;
+    private PrimaryKeyOrderItem id = new PrimaryKeyOrderItem();
 
     //?--------------------------------------   Constructors   ---------------------------------------------------------
 
@@ -38,6 +39,7 @@ public class OrderItem implements Serializable {
 
     //?--------------------------------------   Getters and Setters   --------------------------------------------------
 
+    @JsonIgnore // para não entrar em ‘loop’ infinito na serialização
     public Order getOrder() {
         return id.getOrder();
     }

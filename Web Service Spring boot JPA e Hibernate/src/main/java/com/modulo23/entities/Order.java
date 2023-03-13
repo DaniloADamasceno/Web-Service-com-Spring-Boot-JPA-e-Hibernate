@@ -8,7 +8,9 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "pedidos")
@@ -33,7 +35,11 @@ public class Order implements Serializable{
     @JoinColumn(name = "id_cliente", referencedColumnName = "id")
     private User client;
 
-    // ---------------------------------------   Constructors   --------------------------------------------------------
+    @OneToMany(mappedBy = "id.order")  //  Nome do atributo que está mapeando a tabela no outro lado da relação (OrderItem) --> usa-se o nome da Classe "(id.order)"
+    private Set<OrderItem> items = new HashSet<>();
+
+
+    //? ---------------------------------------   Constructors   --------------------------------------------------------
 
     public Order(Object o, Instant parse, User userNina) {}
 
@@ -68,6 +74,11 @@ public class Order implements Serializable{
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus.getCode();
     }
+
+    public Set<OrderItem> getItems() {
+        return items;
+    }
+
     //---------------------------------------   HashCode and Equals   --------------------------------------------------
 
     @Override

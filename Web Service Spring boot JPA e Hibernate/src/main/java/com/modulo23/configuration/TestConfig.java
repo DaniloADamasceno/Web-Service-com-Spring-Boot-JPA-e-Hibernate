@@ -1,14 +1,8 @@
 package com.modulo23.configuration;
 
-import com.modulo23.entities.Category;
-import com.modulo23.entities.Order;
-import com.modulo23.entities.Product;
-import com.modulo23.entities.User;
+import com.modulo23.entities.*;
 import com.modulo23.entities.enuns.OrderStatus;
-import com.modulo23.repositories.RepositoryCategry;
-import com.modulo23.repositories.RepositoryOrder;
-import com.modulo23.repositories.RepositoryProduct;
-import com.modulo23.repositories.RepositoryUser;
+import com.modulo23.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -33,6 +27,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private RepositoryProduct productRepository;
+
+    @Autowired
+    private RepositoryOrderItem orderItemRepository;
 
     @Override
     public void run(String... args) throws Exception { // Método que será executado quando a aplicação for iniciada
@@ -103,6 +100,12 @@ public class TestConfig implements CommandLineRunner {
         produto14.getCategories().add(categoria4);  // Vestuario
         produto15.getCategories().add(categoria5);  // Esporte e Lazer
 
+        //?-------------------------   Criação de alguns ITENS DO PEDIDO para teste   ----------------------------------
+        OrderItem ordemItem1 = new OrderItem(orderSnoopy2, produto3, 2, produto3.getPrice());
+        OrderItem ordemItem2 = new OrderItem(orderNina, produto6, 1, produto6.getPrice());
+        OrderItem ordemItem3 = new OrderItem(orderFred, produto8, 2, produto8.getPrice());
+        OrderItem ordemItem4 = new OrderItem(orderMaggie, produto6, 2, produto6.getPrice());
+        OrderItem ordemItem5 = new OrderItem(orderSnow, produto13, 1, produto13.getPrice());
 
         //?-------------------------   Salvando os dados no banco de dados   -------------------------------------------
         //!  Salvando o usuário no banco de dados
@@ -120,5 +123,7 @@ public class TestConfig implements CommandLineRunner {
                 produto6, produto7, produto8, produto9, produto10,
                 produto11, produto12, produto13, produto14, produto15));
 
+        //!  Salvando os ITENS DO PEDIDO no banco de dados
+        orderItemRepository.saveAll(Arrays.asList(ordemItem1, ordemItem2, ordemItem3, ordemItem4, ordemItem5));
     }
 }
