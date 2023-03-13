@@ -41,7 +41,7 @@ public class Order implements Serializable{
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)  //  Nome do atributo que está mapeando a tabela no outro lado da relação (Payment) --> usa-se o nome da Classe "(order)"
     private Payment payment;
 
-    //? ---------------------------------------   Constructors   --------------------------------------------------------
+    //?----------------------------------------   Constructors   -------------------------------------------------------
 
     public Order(Object o, Instant parse, User userNina) {}
 
@@ -56,7 +56,7 @@ public class Order implements Serializable{
     public Order() {
 
     }
-    // ---------------------------------------   Getters and Setters   -------------------------------------------------
+    //?---------------------------------------   Getters and Setters   -------------------------------------------------
 
     public Integer getId() {
         return id;
@@ -89,7 +89,7 @@ public class Order implements Serializable{
         this.payment = payment;
     }
 
-    //---------------------------------------   HashCode and Equals   --------------------------------------------------
+    //?--------------------------------------   HashCode and Equals   --------------------------------------------------
 
     @Override
     public boolean equals(Object o) {
@@ -102,18 +102,26 @@ public class Order implements Serializable{
     public int hashCode() {
         return Objects.hash(getId(), getMoment());
     }
-    //---------------------------------------   ToString   -------------------------------------------------------------
+    //?--------------------------------------   ToString   -------------------------------------------------------------
 
     @Override
     public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", moment=" + moment +
+        return "Pedido{" +
+                "ID=" + id +
+                ", momento=" + moment +
                 '}';
     }
-    //---------------------------------------   Methods   --------------------------------------------------------------
+    //?--------------------------------------   Methods   --------------------------------------------------------------
+    private Double getTotal() {
 
-    private Double total() {
-        return null;
+        //?   >>>>>  Forma 1
+//        double sum = 0.0;
+//        for (OrderItem x : items) {
+//            sum += x.getSubTotal();
+//        }
+//        return sum;
+
+        //?   >>>>>  Forma 2
+        return items.stream().mapToDouble(OrderItem::getSubTotal).sum();
     }
 }
