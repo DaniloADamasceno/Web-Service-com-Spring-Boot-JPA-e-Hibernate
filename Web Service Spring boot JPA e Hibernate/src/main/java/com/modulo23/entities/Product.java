@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.modulo23.entities.Category;
 
 @Entity
@@ -38,6 +40,9 @@ public class Product implements Serializable {
             joinColumns = @JoinColumn(name = "id_produto"),  //Nome da Tabela que está sendo mapeada
             inverseJoinColumns = @JoinColumn(name = "id_categoria"))
     private Set<Category> categories = new HashSet<>();
+
+    @OneToMany(mappedBy = "id.product")  //nome do atributo que está na classe OrderItem
+    private Set<OrderItem> items = new HashSet<>();
     //---------------------------------------   Constructors   ---------------------------------------------------------
 
     public Product() {}
@@ -50,7 +55,7 @@ public class Product implements Serializable {
         this.urlImage = urlImage;
     }
 
-    //---------------------------------------   Getters and Setters   --------------------------------------------------
+    //?---------------------------------------   Getters and Setters   -------------------------------------------------
 
     public Integer getId() {
         return id;
@@ -94,6 +99,15 @@ public class Product implements Serializable {
 
     public Set<Category> getCategories() {
         return categories;
+    }
+
+    @JsonIgnore  //para não entrar em loop infinito na serialização
+    public Set<Order> getOrders() {
+        Set<Order> set = new HashSet<>();
+        for (OrderItem xOrderItens : items) {
+            set.add(xOrderItens.getOrder());
+        }
+        return set;
     }
 
     //---------------------------------------   HashCode and Equals   --------------------------------------------------
