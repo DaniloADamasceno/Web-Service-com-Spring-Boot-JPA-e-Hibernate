@@ -38,7 +38,6 @@ public class ResourceUser {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
                 buildAndExpand(userInsert.getId()).toUri();
         return ResponseEntity.created(uri).body(userInsert);
-        //return ResponseEntity.ok().body(userTest);
     }
 
     @DeleteMapping(value = "/{id}") // -->  DeleteMapping para deletar um usuário
