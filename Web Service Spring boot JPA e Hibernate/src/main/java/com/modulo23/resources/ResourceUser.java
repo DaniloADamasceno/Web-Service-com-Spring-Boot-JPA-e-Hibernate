@@ -33,7 +33,7 @@ public class ResourceUser {
     }
 
     @PostMapping
-    public ResponseEntity<User> insert(@RequestBody User userInsert) { //RequestBody para receber o JSON do body
+    public ResponseEntity<User> insert(@RequestBody User userInsert) { // -->  RequestBody para receber o JSON do body
         userInsert = serviceUser.insert(userInsert);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
                 buildAndExpand(userInsert.getId()).toUri();
@@ -41,9 +41,14 @@ public class ResourceUser {
         //return ResponseEntity.ok().body(userTest);
     }
 
-    @DeleteMapping(value = "/{id}") // DeleteMapping para deletar um usuário
+    @DeleteMapping(value = "/{id}") // -->  DeleteMapping para deletar um usuário
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         serviceUser.delete(id);
         return ResponseEntity.noContent().build();
+    }
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<User> update(@PathVariable Integer id, @RequestBody User userUpdate) {
+        userUpdate = serviceUser.update(id, userUpdate);
+        return ResponseEntity.ok().body(userUpdate);
     }
 }
