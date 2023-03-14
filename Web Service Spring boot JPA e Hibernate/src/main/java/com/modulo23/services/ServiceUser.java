@@ -2,6 +2,7 @@ package com.modulo23.services;
 
 import com.modulo23.entities.User;
 import com.modulo23.repositories.RepositoryUser;
+import com.modulo23.services.exceptions.ResourceNotFoudException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class ServiceUser {
 
     public User findAllById(Integer id) { // -->  Método que retorna todos os usuários através do ID
         Optional<User> optionalById = repositoryUser.findById(id);
-        return optionalById.get();
+        return optionalById.orElseThrow(() -> new ResourceNotFoudException(id));
     }
 
     public User insert(User userInsert) {
