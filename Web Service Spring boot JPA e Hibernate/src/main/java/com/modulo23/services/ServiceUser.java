@@ -15,15 +15,25 @@ public class ServiceUser {
     private RepositoryUser repositoryUser;
 
 
-    //------------------------------------   Methods   -----------------------------------------------------------------
+    //?-----------------------------------   Methods   -----------------------------------------------------------------
 
     public List<User> findAll() {  //  Método que retorna todos os usuários
         return repositoryUser.findAll();
     }
-
+/*
     public List<User> findAllById(Integer id) {  //  Método que retorna todos os usuários através do ID
         Optional<User> optionalById = repositoryUser.findById(id);
         return (List<User>) optionalById.get();
     }
-
+*/
+    public User findAllById(Integer id) {
+        Optional<User> optionalById = repositoryUser.findById(id);
+        return optionalById.get();
+    }
+    public User insert(User userInsert) {
+        return repositoryUser.save(userInsert);
+    }
+    public void delete(Integer id) {
+        repositoryUser.deleteById(id);
+    }
 }

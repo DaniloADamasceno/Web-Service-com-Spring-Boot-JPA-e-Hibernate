@@ -27,7 +27,7 @@ public class User implements Serializable {
     @Column(name = "cliente", nullable = false, length = 250)
     private String name;
 
-    @Column(name = "email", nullable = false, length = 100)
+    //@Column(name = "email", nullable = false, length = 100)
     private String email;
 
     @Column(name = "telefone", nullable = false, length = 20)
@@ -64,6 +64,14 @@ public class User implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setName(String name) {

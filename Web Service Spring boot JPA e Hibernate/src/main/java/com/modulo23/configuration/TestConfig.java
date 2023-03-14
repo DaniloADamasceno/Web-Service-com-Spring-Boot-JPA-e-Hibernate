@@ -14,7 +14,7 @@ import java.time.Instant;
 import java.util.Arrays;
 
 @Configuration //  Anotação que indica que a classe e de Configuração
-@Profile("test")
+@Profile("test") //  Anotação que indica que a classe será executada apenas quando o profile for "test"
 public class TestConfig implements CommandLineRunner {
 
     //?--------------------------------------   Injeção de dependência   -----------------------------------------------
