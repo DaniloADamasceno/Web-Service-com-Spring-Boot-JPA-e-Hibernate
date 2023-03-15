@@ -42,6 +42,8 @@
 
 
        
+<h2>OBS:</h2>
+   <h3> Os Servidores da HEROKU agora não contam mais coom planos gratuitos e por conta disso o app não foi implemtnado na plataforma.</h3>
 
 <hr>
 
