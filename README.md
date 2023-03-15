@@ -14,17 +14,17 @@
 
 - [x] Criar projeto Spring Boot Java
 
-- [ ] Implementar modelo de domínio
+- [x] Implementar modelo de domínio
 
-- [ ] Estruturar camadas lógicas: resource, service, repository
+- [x] Estruturar camadas lógicas: resource, service, repository
 
-- [ ] Configurar banco de dados de teste (H2)
+- [x] Configurar banco de dados de teste (H2)
 
-- [ ] Povoar o banco de dados
+- [x] Povoar o banco de dados
 
-- [ ] CRUD - Create, Retrieve, Update, Delete
+- [x] CRUD - Create, Retrieve, Update, Delete
 
-- [ ] Tratamento de exceções
+- [x] Tratamento de exceções
 
 
 ## Stack utilizada
